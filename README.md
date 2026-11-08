@@ -16,6 +16,7 @@ A minimalist personal poetry portfolio and digital journal with a paper-like des
 ├── whispers_of_orpheus.html    # Dedicated page for "Whispers of Orpheus"
 └── poetry.html                 # Dedicated page for "Poetry"
 
+```
 ## Things to improve
 ---
 Maybe a different font
