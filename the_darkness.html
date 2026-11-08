@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Poetry Journal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Playfair+Display:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4efe6;
+            color: #332f2b;
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 3.5rem;
+            margin: 0;
+            color: #5a4a42;
+        }
+
+        p.subtitle {
+            font-style: italic;
+            color: #7a6a60;
+            margin-top: 5px;
+        }
+
+        /* Галерия с картички */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .card {
+            background: #fffcf7;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e8dfd1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            
+          
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(90, 74, 66, 0.15);
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            color: #4a3b32;
+        }
+
+        .card .snippet {
+            font-style: italic;
+            color: #665b54;
+            line-height: 1.6;
+        }
+
+        .card .date {
+            font-size: 0.85rem;
+            color: #a0938a;
+            margin-top: 20px;
+            display: block;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(45, 38, 34, 0.6);
+            display: none; 
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            backdrop-filter: blur(4px);
+        }
+
+        .journal-page {
+            background: #fdfbf7;
+            width: 100%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 50px;
+            border-radius: 4px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            border-left: 8px solid #c4b4a3;
+            position: relative;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: #8c7b70;
+            cursor: pointer;
+        }
+
+        .poem-content {
+            white-space: pre-line;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #2b2521;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+        <h1>Verses & Whispers</h1>
+        <p class="subtitle">A personal collection of poems</p>
+    </header>
+
+    
+    <div class="gallery">
+        
+        <div class="card" onclick="openPoem('Silent Echoes', 'The wind still knows your name,\nIt whispers through the trees...\n\nNo shadows left to blame,\nJust autumn’s fading breeze.', 'October 12')">
+            <h2>How to kill time?</h2>
+            <p class="snippet">"When there's an endless, boring day / I look for something to keep me sane..."</p>
+            <span class=""date"> October 12 </span>
+        </div>
+
+        <!-- Картичка 2 -->
+        <div class="card" onclick="openPoem('Midnight Coffee', 'Black coffee in a paper cup,\nThe city sleeps, the moon comes up.\n\nWords begin to find their place,\nLost within a quiet space.', 'November 3')">
+            <h2>Midnight Coffee</h2>
+            <p class="snippet">"Black coffee in a paper cup, the city sleeps..."</p>
+            <span class="date">November 3</span>
+        </div>
+
+    </div>
+
+    <!-- Модален прозорец (разтвореният тефтер) -->
+    <div class="modal-overlay" id="poemModal">
+        <div class="journal-page">
+            <button class="close-btn" onclick="closePoem()">×</button>
+            <h2 id="modalTitle" style="margin-top:0; color: #4a3b32;"></h2>
+            <span id="modalDate" style="color: #a0938a; font-size: 0.9rem; display:block; margin-bottom: 25px;"></span>
+            <div class="poem-content" id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript за интерактивността -->
+    <script>
+        function openPoem(title, content, date) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalContent').innerText = content;
+            document.getElementById('modalDate').innerText = date;
+            document.getElementById('poemModal').style.display = 'flex';
+        }
+
+        function closePoem() {
+            document.getElementById('poemModal').style.display = 'none';
+        }
+
+        // Затваряне при кликване извън тефтера
+        window.onclick = function(event) {
+            let modal = document.getElementById('poemModal');
+            if (event.target == modal) {
+                closePoem();
+            }
+        }
+
+</body>
+</html>    
