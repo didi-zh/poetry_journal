@@ -20,9 +20,23 @@
             align-items: center;
         }
 
+        .back-link {
+            align-self: flex-start;
+            margin: 0 auto 20px auto;
+            max-width: 600px;
+            width: 100%;
+            color: #7a6a60;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         h1 {
@@ -36,139 +50,75 @@
             font-style: italic;
             color: #7a6a60;
             margin-top: 5px;
+            font-size: 0.95rem;
         }
 
-        /* Галерия с картички */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            width: 100%;
-            max-width: 1000px;
-        }
-
+        /* Бялата картичка с твоята форма */
         .card {
             background: #fffcf7;
-            padding: 25px;
+            padding: 35px;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             border: 1px solid #e8dfd1;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            
-          
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(90, 74, 66, 0.15);
-        }
-
-        .card h2 {
-            font-size: 1.5rem;
-            margin-top: 0;
-            color: #4a3b32;
-        }
-
-        .card .snippet {
-            font-style: italic;
-            color: #665b54;
-            line-height: 1.6;
-        }
-
-        .card .date {
-            font-size: 0.85rem;
-            color: #a0938a;
-            margin-top: 20px;
-            display: block;
-        }
-
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(45, 38, 34, 0.6);
-            display: none; 
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            box-sizing: border-box;
-            backdrop-filter: blur(4px);
-        }
-
-        .journal-page {
-            background: #fdfbf7;
-            width: 100%;
             max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-            padding: 50px;
-            border-radius: 4px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            border-left: 8px solid #c4b4a3;
-            position: relative;
-            animation: fadeIn 0.3s ease;
+            width: 100%;
+            box-sizing: border-box;
         }
 
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            font-size: 1.8rem;
-            background: none;
-            border: none;
-            color: #8c7b70;
-            cursor: pointer;
-        }
-
-        .poem-content {
-            white-space: pre-line;
+        .poem-text {
+            font-style: italic;
+            text-align: center;
+            color: #665b54;
             line-height: 1.8;
             font-size: 1.1rem;
-            color: #2b2521;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+            white-space: pre-line;
+            margin: 0;
         }
     </style>
 </head>
 <body>
 
-<header>
-        <h1>Verses & Whispers</h1>
-        <p class="subtitle">A personal collection of poems</p>
+    <header>
+        <h1>How to kill time?</h1>
+        <p class="subtitle">October 12.2025</p>
     </header>
+     <div class="gallery">
+        
+        
+        <div class="card">
+            <p class="snippet"></p>
+                When there's an endless, boring day 
+                <br>I look for something to keep me sane
+                <br>Something to take my heavy thoughts away 
+                <br>And cure my tired overloaded brain.
+                <br><br>
+                <br>Time feels stuck, yet something slips away 
+                <br>Scroll through posts and shuttle playlists 
+                <br>Each second empties, my mind's space
+                <br>Every face blurs and becomes nameless
+                <br><br>
+                <br>We are all strangers in our own struggle.
+                <br> Chasing stars that vanish in the sky 
+                <br>Ambition fading like a quiet mumble 
+               <br> Still time goes like an never-ending lie
+                <br><br>
+                <br>Count the seconds or they are lost
+                <br>Never has it been enough and might leave us all behind 
+                <br>Turn yourself into a machine but at what cost 
+                <br>Time was only made to control the human's mind
+                 <br> <br>
+                <br> So I wonder what it's like to kill time
+                <br>To drift away into the unknown
+                <br>Break the pattern of the clock's crime
+                <br>And watch the world turn into stone
+
+
+
+            </p>    
+            
+        </div>
+        
 
     
-  
-
-    <!-- JavaScript за интерактивността -->
-    <script>
-        function openPoem(title, content, date) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalContent').innerText = content;
-            document.getElementById('modalDate').innerText = date;
-            document.getElementById('poemModal').style.display = 'flex';
-        }
-
-        function closePoem() {
-            document.getElementById('poemModal').style.display = 'none';
-        }
-
-        // Затваряне при кликване извън тефтера
-        window.onclick = function(event) {
-            let modal = document.getElementById('poemModal');
-            if (event.target == modal) {
-                closePoem();
-            }
-        }
-
 </body>
 </html>    
