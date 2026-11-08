@@ -38,7 +38,6 @@
             margin-top: 5px;
         }
 
-        /* Галерия с картички */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -56,10 +55,13 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
             
-          
+            width: 400px;       
+            min-height: 250px;   
+            
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            box-sizing: border-box;
         }
 
         .card:hover {
@@ -86,56 +88,18 @@
             display: block;
         }
 
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(45, 38, 34, 0.6);
-            display: none; 
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            box-sizing: border-box;
-            backdrop-filter: blur(4px);
-        }
-
-        .journal-page {
-            background: #fdfbf7;
-            width: 100%;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-            padding: 50px;
-            border-radius: 4px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            border-left: 8px solid #c4b4a3;
-            position: relative;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            font-size: 1.8rem;
-            background: none;
-            border: none;
-            color: #8c7b70;
-            cursor: pointer;
-        }
-
         .poem-content {
             white-space: pre-line;
             line-height: 1.8;
             font-size: 1.1rem;
             color: #2b2521;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            width: 100%;
+            height:100%;
         }
     </style>
 </head>
@@ -146,34 +110,44 @@
         <p class="subtitle">A personal collection of poems</p>
     </header>
 
-    
     <div class="gallery">
         
-        <div class="card" >
-            <h2>Poetry</h2>
-            <p class="snippet">"When there's an endless, boring day <br> I look for something to keep me sane..."</p>
-            <span class="date">October 12. 2025 </span>
-        </div>
+        <!-- Картичка 1 -->
+        <a href="how_to_kill_time.html" class="card-link">
+            <div class="card">
+                <h2>How to kill time?</h2>
+                <p class="snippet">"When there's an endless, boring day <br> I look for something to keep me sane..."</p>
+                <span class="date">October 12, 2025</span>
+            </div>
+        </a>
 
-       
-        <div class="card">
-            <h2>Poetry</h2>
-            <p class="snippet">"Poetry is such a beautiful tool <br> It squeeze everything from my soul..."</p>
-            <span class="date">June 10. 2026</span>
-        </div>
+        <!-- Картичка 2 -->
+        <a href="love.html" class="card-link">
+            <div class="card">
+                <h2>Love</h2>
+                <p class="snippet">People say you will know when it comes.<br>You will feel it.<br>The love of the person of your dreams.</p>
+                <span class="date">June 10, 2026</span>
+            </div>
+        </a>
 
+        <!-- Картичка 3 -->
+        <a href="whispers_of_orpheus.html" class="card-link">
+            <div class="card">
+                <h2>Whispers of Orpheus</h2>
+                <p class="snippet">"As i stood hollow by the gate <br>I watched my only love fade..."</p>
+                <span class="date">May 6, 2026</span>
+            </div>
+        </a>
 
-         <div class="card" >
-            <h2>Poetry</h2>
-            <p class="snippet">"As i stood hollow by the gate <br>I watched my only love fade..."</p>
-            <span class="date">May 6. 2026</span>
-        </div>
+        <!-- Картичка 4 -->
+        <a href="poetry.html" class="card-link">
+            <div class="card">
+                <h2>Poetry</h2>
+                <p class="snippet">"Poetry is such a beautiful tool <br> It squeeze everything from my soul..."</p>
+                <span class="date">June 10, 2026</span>
+            </div>
+        </a>
 
-         <div class="card" >
-            <h2>Poetry</h2>
-            <p class="snippet">"Poetry is such a beautiful tool <br> It squeeze everything from my soul..."</p>
-            <span class="date">June 10. 2026</span>
-        </div>
     </div>
 
 </body>
